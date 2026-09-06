@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucky Kashyap | Developer Portfolio</title>
+
+  <meta name="description" content="Official developer portfolio of Lucky Kashyap. Explore interactive projects, skills, and get in touch." />
+  <meta property="og:title" content="Lucky Kashyap | Developer Portfolio" />
+  <meta property="og:description" content="Check out my latest web projects and mini-apps built with HTML, CSS, and JavaScript." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="https://api.dicebear.com/7.x/bottts/svg?seed=Lucky" type="image/svg+xml" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 70px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Light Mode Overrides */
+    body.light-mode {
+      background-color: #f8fafc !important;
+      color: #334155 !important;
+    }
+    body.light-mode h1, 
+    body.light-mode p,
+    body.light-mode h2,
+    body.light-mode h3 {
+      color: #1e293b !important;
+    }
+    body.light-mode .navbar {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: #e2e8f0;
+    }
+    body.light-mode .nav-link {
+      color: #475569;
+    }
+    body.light-mode .hero-container,
+    body.light-mode .contact-card,
+    body.light-mode .project-card,
+    body.light-mode .skills-wrapper {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    body.light-mode .contact-card input,
+    body.light-mode .contact-card textarea {
+      background-color: #f8fafc;
+      color: #1e293b;
+      border-color: #cbd5e1;
+    }
+    body.light-mode .skill-badge,
+    body.light-mode .project-tag {
+      background-color: #f1f5f9;
+      color: #475569;
+      border-color: #e2e8f0;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: #38bdf8;
+    }
+
+    .theme-toggle {
+      background-color: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover {
+      color: #ffffff;
+      border-color: #64748b;
+    }
+
+    /* Hero Section */
+    .hero-container {
+      max-width: 650px;
+      margin: 40px auto 0 auto;
+      padding: 40px 30px;
+      background-color: #1e293b;
+      border-radius: 18px;
+      border: 1px solid #334155;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-img {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      border: 3px solid #475569;
+      background-color: #0f172a;
+    }
+
+    h1 {
+      font-size: 32px;
+      letter-spacing: 0.8px;
+      margin: 18px 0 6px 0;
+      color: #f8fafc;
+    }
+
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 16px;
+      margin: 0 0 20px 0;
+    }
+
+    .action-btn {
+      background-color: #334155;
+      color: #f1f5f9;
+      padding: 11px 22px;
+      border: 1px solid #475569;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .action-btn:hover {
+      background-color: #475569;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #ffffff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .insta {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+    }
+    .wa { background-color: #25d366; }
+    .yt { background-color: #ff0000; }
+
+    /* Skills Box */
+    .skills-wrapper {
+      max-width: 650px;
+      margin: 45px auto 0 auto;
+      padding: 24px;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      text-align: left;
+    }
+
+    .skills-wrapper h2 {
+      font-size: 20px;
+      margin: 0 0 16px 0;
+      color: #f8fafc;
+      text-align: center;
+    }
+
+    .skills-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .skill-badge {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid #334155;
+    }
+
+    /* Projects Section */
+    .projects-wrapper {
+      max-width: 650px;
+      margin: 45px auto 0 auto;
+      text-align: left;
+    }
+
+    .section-title {
+      font-size: 22px;
+      color: #f8fafc;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: #64748b;
+    }
+
+    .project-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 17px;
+      color: #f1f5f9;
+    }
+
+    .project-card p {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .launch-btn {
+      background: none;
+      border: none;
+      color: #38bdf8;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0;
+      margin-bottom: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .launch-btn:hover {
+      text-decoration: underline;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      background-color: #0f172a;
+      color: #38bdf8;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #334155;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      max-width: 440px;
+      margin: 45px auto 0 auto;
+      padding: 26px;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      text-align: left;
+    }
+
+    .contact-card h2 {
+      font-size: 19px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #cbd5e1;
+      text-align: center;
+    }
+
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background-color: #0f172a;
+      color: #f1f5f9;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .contact-card input:focus,
+    .contact-card textarea:focus {
+      border-color: #64748b;
+    }
+
+    .contact-card textarea {
+      resize: vertical;
+      height: 90px;
+    }
+
+    .send-btn {
+      width: 100%;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .send-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Shared Modal Overlays */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-box {
+      background-color: #1e293b;
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid #334155;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      position: relative;
+      animation: modalPop 0.2s ease-out;
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #334155;
+      border: none;
+      color: #94a3b8;
+      font-size: 16px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    .modal-header-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    /* Calculator Modal Grid */
+    #calcDisplay {
+      width: 100%;
+      height: 52px;
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #f8fafc;
+      font-size: 24px;
+      text-align: right;
+      padding: 0 12px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+      outline: none;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .calc-grid button {
+      padding: 14px;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #334155;
+      color: #f1f5f9;
+      transition: background-color 0.15s, transform 0.1s;
+    }
+    .calc-grid button:hover { background-color: #475569; }
+    .calc-grid button:active { transform: scale(0.95); }
+
+    .calc-grid button.op { background-color: #2563eb; color: #fff; }
+    .calc-grid button.op:hover { background-color: #1d4ed8; }
+
+    .calc-grid button.clear { background-color: #ef4444; color: #fff; }
+    .calc-grid button.clear:hover { background-color: #dc2626; }
+
+    .calc-grid button.equal {
+      background-color: #10b981;
+      color: #fff;
+      grid-column: span 2;
+    }
+    .calc-grid button.equal:hover { background-color: #059669; }
+
+    /* Digital Clock Styles */
+    .clock-display {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 36px;
+      font-weight: bold;
+      color: #38bdf8;
+      letter-spacing: 2px;
+      background-color: #0f172a;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      margin: 12px 0;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    }
+
+    .date-display {
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Rock Paper Scissors Styles */
+    .rps-choices {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .rps-btn {
+      font-size: 28px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .rps-btn:hover {
+      transform: scale(1.15);
+      border-color: #38bdf8;
+    }
+
+    .rps-score {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .rps-result {
+      font-size: 15px;
+      font-weight: 600;
+      color: #38bdf8;
+      min-height: 22px;
+    }
+
+    /* Scroll To Top Button */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .scroll-top-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <nav class="navbar">
+    <a href="#top" class="nav-brand">LK.</a>
+    <div class="nav-menu">
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    </div>
+  </nav>
+
+  <div class="hero-container">
+    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Lucky" alt="Profile Avatar" class="profile-img">
+
+    <h1>LUCKY KASHYAP</h1>
+    <p class="subtitle">Aspiring Developer & Tech Enthusiast</p>
+
+    <div style="display: flex; justify-content: center; gap: 14px;">
+      <a href="#contact" style="text-decoration: none;">
+        <button class="action-btn">Contact Me</button>
+      </a>
+      <button class="action-btn" onclick="sayHello()">Say Hello 👋</button>
+    </div>
+
+    <h3 id="greetText" style="color: #94a3b8; font-size: 15px; margin-top: 16px;"></h3>
+
+    <div class="social-links">
+      <a href="https://instagram.com" target="_blank" class="social-btn insta">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        Instagram
+      </a>
+
+      <a href="https://wa.me/919999999999" target="_blank" class="social-btn wa">
+        <svg viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        WhatsApp
+      </a>
+
+      <a href="https://youtube.com" target="_blank" class="social-btn yt">
+        <svg viewBox="0 0 24 24">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        YouTube
+      </a>
+    </div>
+  </div>
+
+  <div class="skills-wrapper" id="skills">
+    <h2>Tech Stack & Tools</h2>
+    <div class="skills-badges">
+      <span class="skill-badge">HTML5</span>
+      <span class="skill-badge">CSS3</span>
+      <span class="skill-badge">JavaScript (ES6+)</span>
+      <span class="skill-badge">DOM Manipulation</span>
+      <span class="skill-badge">Responsive Design</span>
+      <span class="skill-badge">Formspree API</span>
+      <span class="skill-badge">Netlify Hosting</span>
+      <span class="skill-badge">Git & GitHub Basics</span>
+    </div>
+  </div>
+
+  <div class="projects-wrapper" id="projects">
+    <h2 class="section-title">Interactive Showcase</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>🧮 Interactive Calculator</h3>
+        <p>A web-based calculator capable of handling arithmetic operations with keyboard & touch support.</p>
+        <div>
+          <button class="launch-btn" onclick="openModal('calcOverlay')">Launch Calculator ↗</button>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Logic</span>
+          <span class="project-tag">Modal UI</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>⏱️ Real-Time Digital Clock</h3>
+        <p>Dynamic clock synchronizing with local time, real-time seconds, and automated calendar formatting.</p>
+        <div>
+          <button class="launch-btn" onclick="openClockModal()">View Live Clock ↗</button>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Date API</span>
+          <span class="project-tag">setInterval</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>🎮 Rock Paper Scissors</h3>
+        <p>A quick mini browser game featuring randomized computer choices and a live scoring tracker.</p>
+        <div>
+          <button class="launch-btn" onclick="openModal('gameOverlay')">Play Game ↗</button>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Game Logic</span>
+          <span class="project-tag">Math.random()</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-card" id="contact">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/f/mbgjadgr" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email Address" required />
+      <textarea name="message" placeholder="Write your message..." required></textarea>
+      <button type="submit" class="send-btn">Send Message</button>
+    </form>
+  </div>
+
+  <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">↑</button>
+
+  <footer>
+    Designed & Built by Lucky Kashyap © 2026
+  </footer>
+
+  <div class="modal-overlay" id="calcOverlay" onclick="overlayClose(event, 'calcOverlay')">
+    <div class="modal-box" style="width: 290px;">
+      <button class="modal-close-btn" onclick="closeModal('calcOverlay')">✕</button>
+      <div class="modal-header-title">Mini Calculator</div>
+      <input type="text" id="calcDisplay" readonly placeholder="0" />
+      <div class="calc-grid">
+        <button class="clear" onclick="calcClear()">C</button>
+        <button onclick="calcDel()">DEL</button>
+        <button class="op" onclick="calcAdd('/')">/</button>
+        <button class="op" onclick="calcAdd('*')">×</button>
+
+        <button onclick="calcAdd('7')">7</button>
+        <button onclick="calcAdd('8')">8</button>
+        <button onclick="calcAdd('9')">9</button>
+        <button class="op" onclick="calcAdd('-')">-</button>
+
+        <button onclick="calcAdd('4')">4</button>
+        <button onclick="calcAdd('5')">5</button>
+        <button onclick="calcAdd('6')">6</button>
+        <button class="op" onclick="calcAdd('+')">+</button>
+
+        <button onclick="calcAdd('1')">1</button>
+        <button onclick="calcAdd('2')">2</button>
+        <button onclick="calcAdd('3')">3</button>
+        <button onclick="calcAdd('.')">.</button>
+
+        <button onclick="calcAdd('0')">0</button>
+        <button class="equal" onclick="calcCompute()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="clockOverlay" onclick="overlayClose(event, 'clockOverlay')">
+    <div class="modal-box" style="width: 320px; text-align: center;">
+      <button class="modal-close-btn" onclick="closeClockModal()">✕</button>
+      <div class="modal-header-title">Digital Clock</div>
+      <div class="clock-display" id="liveClock">00:00:00 AM</div>
+      <div class="date-display" id="liveDate">Loading date...</div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="gameOverlay" onclick="overlayClose(event, 'gameOverlay')">
+    <div class="modal-box" style="width: 300px; text-align: center;">
+      <button class="modal-close-btn" onclick="closeModal('gameOverlay')">✕</button>
+      <div class="modal-header-title">Rock • Paper • Scissors</div>
+      <div class="rps-score" id="rpsScore">You: 0 | CPU: 0</div>
+      <div class="rps-choices">
+        <button class="rps-btn" onclick="playRps('✊')">✊</button>
+        <button class="rps-btn" onclick="playRps('✋')">✋</button>
+        <button class="rps-btn" onclick="playRps('✌️')">✌️</button>
+      </div>
+      <div class="rps-result" id="rpsResult">Pick your move!</div>
+    </div>
+  </div>
+
+  <script>
+    function sayHello() {
+      let name = prompt("What is your name?");
+      if (name) {
+        document.getElementById("greetText").innerText = "Welcome, " + name + "!";
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+    }
+
+    /* Generic Modal System */
+    function openModal(id) { document.getElementById(id).style.display = "flex"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    function overlayClose(e, id) {
+      if (e.target.id === id) closeModal(id);
+    }
+
+    /* Calculator Logic */
+    const display = document.getElementById("calcDisplay");
+    function calcAdd(val) {
+      if (display.value === "Error") display.value = "";
+      display.value += val;
+    }
+    function calcClear() { display.value = ""; }
+    function calcDel() { display.value = display.value.slice(0, -1); }
+    function calcCompute() {
+      try {
+        if (display.value.trim() !== "") {
+          display.value = Function('"use strict";return (' + display.value + ')')();
+        }
+      } catch (err) {
+        display.value = "Error";
+      }
+    }
+
+    /* Clock Logic */
+    let clockInterval;
+    function openClockModal() {
+      openModal('clockOverlay');
+      updateClock();
+      clockInterval = setInterval(updateClock, 1000);
+    }
+    function closeClockModal() {
+      closeModal('clockOverlay');
+      clearInterval(clockInterval);
+    }
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("liveClock").innerText = now.toLocaleTimeString();
+      document.getElementById("liveDate").innerText = now.toLocaleDateString(undefined, {
+        weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'
+      });
+    }
+
+    /* RPS Game Logic */
+    let userWins = 0;
+    let cpuWins = 0;
+    const moves = ['✊', '✋', '✌️'];
+
+    function playRps(userChoice) {
+      const cpuChoice = moves[Math.floor(Math.random() * moves.length)];
+      const resEl = document.getElementById("rpsResult");
+      const scoreEl = document.getElementById("rpsScore");
+
+      if (userChoice === cpuChoice) {
+        resEl.innerText = `Tie! Both picked ${userChoice}`;
+      } else if (
+        (userChoice === '✊' && cpuChoice === '✌️') ||
+        (userChoice === '✋' && cpuChoice === '✊') ||
+        (userChoice === '✌️' && cpuChoice === '✋')
+      ) {
+        userWins++;
+        resEl.innerText = `You Won! ${userChoice} beats ${cpuChoice} 🎉`;
+      } else {
+        cpuWins++;
+        resEl.innerText = `CPU Won! ${cpuChoice} beats ${userChoice} 🤖`;
+      }
+      scoreEl.innerText = `You: ${userWins} | CPU: ${cpuWins}`;
+    }
+  </script>
+
+</body>
+</html>
